@@ -44,14 +44,14 @@ class TestClass {
 
 const testClass = new TestClass();
 
-suite('when barmen pours whisky', function () {
+suite('When barmen pours whisky', function () {
 	setup(function () {
 		testClass.SoberVisitor();
 		testClass.FreeBarman();
 		testClass.testMe.goToBar(testClass.GetFakeCar());
 	});
 
-	suite('i ask 50 grams', function () {
+	suite('I ask 50 grams', function () {
 		test('I get 50 grams', function () {
 			var iAskVolume = 50;
 
@@ -64,18 +64,10 @@ suite('when barmen pours whisky', function () {
 		});
 	});
 
-	suite('i ask -10 grams', function () {
-		test('I get an error', function (done) {
-			fs.readFile('whisky.jpg', function (err, whisky) {
-				if (err) {
-					done(err);
-				}
-
-				var iAskVolume = -10;
-
-				expect(() => barmen.pour(whisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
-				done();
-			});
+	suite('I ask -10 grams', function () {
+		test('I get a sorry answer', function () {
+			var iAskVolume = -10;
+			expect(() => testClass.testBarman.pour(testClass.GetFakeWhisky, iAskVolume)).to.throw(/Invalid volume of whisky/);
 		});
 	});
 

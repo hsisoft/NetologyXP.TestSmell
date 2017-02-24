@@ -36,36 +36,31 @@ class TestClass {
 	GetFakeCar(){
 		return this._testMe.getMyCar("fakeCar");
 	}
+
+	GetFakeWhisky(){
+		return "fakeWhisky";
+	}
 }
 
 const testClass = new TestClass();
 
 suite('when barmen pours whisky', function () {
 	setup(function () {
-//		this.timeout(20000);
 		testClass.SoberVisitor();
 		testClass.FreeBarman();
 		testClass.testMe.goToBar(testClass.GetFakeCar());
 	});
 
 	suite('i ask 50 grams', function () {
-		test('I get and drink whisky', function (done) {
-			fs.readFile('whisky.jpg', function (err, whisky) {
-				if (err) {
-					done(err);
-				}
+		test('I get 50 grams', function () {
+			var iAskVolume = 50;
 
-				var iAskVolume = 50;
+			var volumeInGlass = testClass.testBarman.pour(testClass.GetFakeWhisky, iAskVolume);
+//			testClass.testMe.drink(volumeInGlass);
 
-				var volumeInGlass = barmen.pour(whisky, iAskVolume);
-				me.drink(volumeInGlass);
-
-				assert.equal(iAskVolume, volumeInGlass);
-				assert.equal(false, me.isDrunk());
-				assert.equal(50, me.getTotallyDrunk());
-
-				done();
-			});
+			assert.equal(iAskVolume, volumeInGlass);
+//			assert.equal(false, me.isDrunk());
+//			assert.equal(50, me.getTotallyDrunk());
 		});
 	});
 

@@ -18,10 +18,10 @@
   ],
   "author": "SmartStepGroup",
   "devDependencies": {
-    "mocha": "~2.4.5",
-    "chai": "~3.5.0",
+    "chai": "^3.5.0",
     "chai-http": "~2.0.1",
     "chai-string": "~1.2.0",
-    "username": "~2.2.2"
+    "mocha": "~2.4.5",
+    "username": "^2.2.2"
   }
 }

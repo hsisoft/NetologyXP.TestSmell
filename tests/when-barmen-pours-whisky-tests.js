@@ -33,34 +33,19 @@ class TestClass {
 		this._testBarman.free();
 	}
 
-
-	TestDownloadUrl(url){
-		imageDownloader.download('http://www.rosa-obs.com/images/ccd/M31_karel_full.jpg',
-			'mycar.jpg', function () {
-				var car = me.getMyCar("mycar.jpg");
-				me.goToBar(car);
-				barmen.free();
-
-				done();
-			});
+	GetFakeCar(){
+		return this._testMe.getMyCar("fakeCar");
 	}
 }
 
 const testClass = new TestClass();
 
 suite('when barmen pours whisky', function () {
-	setup(function (done) {
-		this.timeout(20000);
+	setup(function () {
+//		this.timeout(20000);
 		testClass.SoberVisitor();
-
-		testClass.testImageDownloader.download('http://www.rosa-obs.com/images/ccd/M31_karel_full.jpg',
-			'mycar.jpg', function () {
-				var car = testClass.testMe.getMyCar("mycar.jpg");
-				testClass.testMe.goToBar(car);
-				testClass.FreeBarman();
-
-				done();
-			});
+		testClass.FreeBarman();
+		testClass.testMe.goToBar(testClass.GetFakeCar());
 	});
 
 	suite('i ask 50 grams', function () {
